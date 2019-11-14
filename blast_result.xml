@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">
+<BlastOutput>
+    <BlastOutput_program>blastp</BlastOutput_program>
+    <BlastOutput_version>BLASTP 2.10.0+</BlastOutput_version>
+    <BlastOutput_reference>Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&amp;auml;ffer, Jinghui Zhang, Zheng
+        Zhang, Webb Miller, and David J. Lipman (1997), &quot;Gapped BLAST and PSI-BLAST: a new generation of protein
+        database search programs&quot;, Nucleic Acids Res. 25:3389-3402.
+    </BlastOutput_reference>
+    <BlastOutput_db>pdb</BlastOutput_db>
+    <BlastOutput_query-ID>Query_11601</BlastOutput_query-ID>
+    <BlastOutput_query-def>unnamed protein product</BlastOutput_query-def>
+    <BlastOutput_query-len>14</BlastOutput_query-len>
+    <BlastOutput_param>
+        <Parameters>
+            <Parameters_matrix>PAM30</Parameters_matrix>
+            <Parameters_expect>10</Parameters_expect>
+            <Parameters_gap-open>9</Parameters_gap-open>
+            <Parameters_gap-extend>1</Parameters_gap-extend>
+            <Parameters_filter>F</Parameters_filter>
+        </Parameters>
+    </BlastOutput_param>
+    <BlastOutput_iterations>
+        <Iteration>
+            <Iteration_iter-num>1</Iteration_iter-num>
+            <Iteration_query-ID>Query_11601</Iteration_query-ID>
+            <Iteration_query-def>unnamed protein product</Iteration_query-def>
+            <Iteration_query-len>14</Iteration_query-len>
+            <Iteration_hits>
+                <Hit>
+                    <Hit_num>1</Hit_num>
+                    <Hit_id>gi|284793943|pdb|3HKM|A</Hit_id>
+                    <Hit_def>Chain A, Crystal Structure Of Rice(Oryza Sativa) Rrp46 &gt;gi|284793944|pdb|3HKM|B Chain B,
+                        Crystal Structure Of Rice(Oryza Sativa) Rrp46 &gt;gi|284793945|pdb|3HKM|C Chain C, Crystal
+                        Structure Of Rice(Oryza Sativa) Rrp46
+                    </Hit_def>
+                    <Hit_accession>3HKM_A</Hit_accession>
+                    <Hit_len>246</Hit_len>
+                    <Hit_hsps>
+                        <Hsp>
+                            <Hsp_num>1</Hsp_num>
+                            <Hsp_bit-score>24.392</Hsp_bit-score>
+                            <Hsp_score>50</Hsp_score>
+                            <Hsp_evalue>2.44951</Hsp_evalue>
+                            <Hsp_query-from>8</Hsp_query-from>
+                            <Hsp_query-to>14</Hsp_query-to>
+                            <Hsp_hit-from>92</Hsp_hit-from>
+                            <Hsp_hit-to>98</Hsp_hit-to>
+                            <Hsp_query-frame>0</Hsp_query-frame>
+                            <Hsp_hit-frame>0</Hsp_hit-frame>
+                            <Hsp_identity>6</Hsp_identity>
+                            <Hsp_positive>7</Hsp_positive>
+                            <Hsp_gaps>0</Hsp_gaps>
+                            <Hsp_align-len>7</Hsp_align-len>
+                            <Hsp_qseq>CLLTIHP</Hsp_qseq>
+                            <Hsp_hseq>CLLTVHP</Hsp_hseq>
+                            <Hsp_midline>CLLT+HP</Hsp_midline>
+                        </Hsp>
+                    </Hit_hsps>
+                </Hit>
+                <Hit>
+                    <Hit_num>2</Hit_num>
+                    <Hit_id>gi|99032582|pdb|2GJM|A</Hit_id>
+                    <Hit_def>Chain A, Crystal Structure Of Buffalo Lactoperoxidase At 2.75a Resolution</Hit_def>
+                    <Hit_accession>2GJM_A</Hit_accession>
+                    <Hit_len>583</Hit_len>
+                    <Hit_hsps>
+                        <Hsp>
+                            <Hsp_num>1</Hsp_num>
+                            <Hsp_bit-score>22.6954</Hsp_bit-score>
+                            <Hsp_score>46</Hsp_score>
+                            <Hsp_evalue>9.77307</Hsp_evalue>
+                            <Hsp_query-from>3</Hsp_query-from>
+                            <Hsp_query-to>8</Hsp_query-to>
+                            <Hsp_hit-from>220</Hsp_hit-from>
+                            <Hsp_hit-to>225</Hsp_hit-to>
+                            <Hsp_query-frame>0</Hsp_query-frame>
+                            <Hsp_hit-frame>0</Hsp_hit-frame>
+                            <Hsp_identity>6</Hsp_identity>
+                            <Hsp_positive>6</Hsp_positive>
+                            <Hsp_gaps>0</Hsp_gaps>
+                            <Hsp_align-len>6</Hsp_align-len>
+                            <Hsp_qseq>KKPSPC</Hsp_qseq>
+                            <Hsp_hseq>KKPSPC</Hsp_hseq>
+                            <Hsp_midline>KKPSPC</Hsp_midline>
+                        </Hsp>
+                    </Hit_hsps>
+                </Hit>
+                <Hit>
+                    <Hit_num>3</Hit_num>
+                    <Hit_id>gi|118138499|pdb|2IPS|A</Hit_id>
+                    <Hit_def>Chain A, Crystal Structure Of A Ternary Complex Of Bovine Lactoperoxidase With Thiocyanate
+                        And Iodide At 3.1 A Resolution &gt;gi|119390583|pdb|2NQX|A Chain A, Crystal Structure Of Bovine
+                        Lactoperoxidase With Iodide Ions At 2.9a Resolution &gt;gi|1402403138|pdb|5ZWW|A Chain A,
+                        CRYSTAL STRUCTURE OF THE COMPLEX OF LACTOPEROXIDASE WITH HYDROGEN PEROXIDE AT 1.77A RESOLUTION
+                        &gt;gi|1770301600|pdb|6L32|A Chain A, Lactoperoxidase
+                    </Hit_def>
+                    <Hit_accession>2IPS_A</Hit_accession>
+                    <Hit_len>595</Hit_len>
+                    <Hit_hsps>
+                        <Hsp>
+                            <Hsp_num>1</Hsp_num>
+                            <Hsp_bit-score>22.6954</Hsp_bit-score>
+                            <Hsp_score>46</Hsp_score>
+                            <Hsp_evalue>9.88145</Hsp_evalue>
+                            <Hsp_query-from>3</Hsp_query-from>
+                            <Hsp_query-to>8</Hsp_query-to>
+                            <Hsp_hit-from>232</Hsp_hit-from>
+                            <Hsp_hit-to>237</Hsp_hit-to>
+                            <Hsp_query-frame>0</Hsp_query-frame>
+                            <Hsp_hit-frame>0</Hsp_hit-frame>
+                            <Hsp_identity>6</Hsp_identity>
+                            <Hsp_positive>6</Hsp_positive>
+                            <Hsp_gaps>0</Hsp_gaps>
+                            <Hsp_align-len>6</Hsp_align-len>
+                            <Hsp_qseq>KKPSPC</Hsp_qseq>
+                            <Hsp_hseq>KKPSPC</Hsp_hseq>
+                            <Hsp_midline>KKPSPC</Hsp_midline>
+                        </Hsp>
+                    </Hit_hsps>
+                </Hit>
+                <Hit>
+                    <Hit_num>4</Hit_num>
+                    <Hit_id>gi|149243423|pdb|2PT3|A</Hit_id>
+                    <Hit_def>Chain A, Crystal Structure Of Bovine Lactoperoxidase At 2.34 A Resolution Reveals Multiple
+                        Anion Binding Sites &gt;gi|149243439|pdb|2PUM|A Chain A, Crystal Structure Of Bovine
+                        Lactoperoxidase Complex With Catechol And Iodide At 2.7 A Resolution &gt;gi|157836232|pdb|2QPK|A
+                        Chain A, Crystal Structure Of The Complex Of Bovine Lactoperoxidase With Salicylhydroxamic Acid
+                        At 2.34 A Resolution &gt;gi|157836255|pdb|2QQT|A Chain A, Crystal Structure Of The Complex Of
+                        Bovine Lactoperoxidase With Acetyl Salicylic Acid At 2.5 A Resolution &gt;gi|157836287|pdb|2QRB|A
+                        Chain A, Crystal Structure Of Chloride Saturated Bovine Lactoperoxidase At 2.5 A Resolution
+                        Shows Multiple Halide Binding Sites &gt;gi|170785185|pdb|3BXI|A Chain A, Structure Of The
+                        Complex Of Bovine Lactoperoxidase With Its Catalyzed Product Hypothiocyanate Ion At 2.3a
+                        Resolution &gt;gi|226192662|pdb|3ERI|A Chain A, First Structural Evidence Of Substrate
+                        Specificity In Mammalian Peroxidases: Crystal Structures Of Substrate Complexes With
+                        Lactoperoxidases From Two Different Species &gt;gi|226192713|pdb|3GC1|A Chain A, Crystal
+                        Structure Of Bovine Lactoperoxidase &gt;gi|226192714|pdb|3GCJ|A Chain A, Mode Of Ligand Binding
+                        And Assignment Of Subsites In Mammalian Peroxidases: Crystal Structure Of Lactoperoxidase
+                        Complexes With Acetyl Salycylic Acid, Salicylhydroxamic Acid And Benzylhydroxamic Acid &gt;gi|226192715|pdb|3GCK|A
+                        Chain A, Mode Of Ligand Binding And Assignment Of Subsites In Mammalian Peroxidases: Crystal
+                        Structure Of Lactoperoxidase Complexes With Acetyl Salycylic Acid, Salicylhydroxamic Acid And
+                        Benzylhydroxamic Acid &gt;gi|226192716|pdb|3GCL|A Chain A, Mode Of Ligand Binding And Assignment
+                        Of Subsites In Mammalian Peroxidases: Crystal Structure Of Lactoperoxidase Complexes With Acetyl
+                        Salycylic Acid, Salicylhydroxamic Acid And Benzylhydroxamic Acid &gt;gi|261278782|pdb|3I6N|A
+                        Chain A, Mode of Binding of the Tuberculosis Prodrug Isoniazid to Peroxidases: Crystal Structure
+                        of Bovine Lactoperoxidase with Isoniazid at 2.7 Resolution &gt;gi|296863514|pdb|3KRQ|A Chain A,
+                        Crystal Structure Of The Complex Of Lactoperoxidase With A Potent Inhibitor Amino-Triazole At
+                        2.2a Resolution &gt;gi|309320004|pdb|3NYH|A Chain A, Crystal Structure Of Lactoperoxidase
+                        Complexed Simultaneously With Thiocyanate Ion, Iodide Ion, Bromide Ion, Chloride Ion Through The
+                        Substrate Diffusion Channel Reveals A Preferential Queue Of The Inorganic Substrates Towards The
+                        Distal Heme Cavity &gt;gi|313103905|pdb|3OGW|A Chain A, Structure Of The Complex Of Bovine
+                        Lactoperoxidase With Indomethacin At 1.9a Resolution &gt;gi|316983365|pdb|3PY4|A Chain A,
+                        Crystal Structure Of Bovine Lactoperoxidase In Complex With Paracetamol At 2.4a Resolution &gt;gi|325054091|pdb|3Q9K|A
+                        Chain A, Crystal Structure Of Bovine Lactoperoxidase Complexed With Phenyl Isothiocyanate At 1.7
+                        A Resolution &gt;gi|325054116|pdb|3QL6|A Chain A, Crystal Structure Of The Complex Of Bovine
+                        Lactoperoxidase With Nimesulide At 1.7 A Resolution &gt;gi|335892552|pdb|3S4F|A Chain A, Crystal
+                        Structure Of The Complex Of Bovine Lactoperoxidase With 1h- Pyrazolo[4,3-C] Pyridine At 1.99 A
+                        Resolution &gt;gi|342351052|pdb|3R4X|A Chain A, Crystal Structure Of Bovine Lactoperoxidase
+                        Complexed With Pyrazine-2- Carboxamide At 2 A Resolution &gt;gi|343781134|pdb|3R5O|A Chain A,
+                        Crystal Structure Of The Complex Of Bovine Lactoperoxidase With 4- Allyl-2-methoxyphenol At 2.6
+                        A Resolution &gt;gi|347447730|pdb|3TGY|A Chain A, Crystal Structure Of The Complex Of Bovine
+                        Lactoperoxidase With Ascorbic Acid At 2.35 A Resolution &gt;gi|365813177|pdb|3UBA|A Chain A,
+                        Crystal Structure Of The Complex Of Bovine Lactoperoxidase With P- Hydroxycinnamic Acid At 2.6 A
+                        Resolution &gt;gi|375332594|pdb|3V6Q|A Chain A, Crystal Structure Of The Complex Of Bovine
+                        Lactoperoxidase With Carbon Monoxide At 2.0 A Resolution &gt;gi|405945081|pdb|4GM7|A Chain A,
+                        Structure Of Cinnamic Acid Bound Bovine Lactoperoxidase At 2.6a Resolution. &gt;gi|405945082|pdb|4GN6|A
+                        Chain A, Structure Of Paracetamol Bound Bovine Lactoperoxidase At 2.45a Resolution. &gt;gi|523309919|pdb|4KSZ|A
+                        Chain A, Crystal Structure Of Bovine Lactoperoxidase Complexed With Cystiene At 1.98a Resolution
+                        &gt;gi|560189196|pdb|4NJB|A Chain A, Crystal Structure Of The Complex Of Lactoperoxidase From
+                        Bovine With 3,3-oxydipyridine At 2.31 A Resolution &gt;gi|568786919|pdb|4NT3|A Chain A,
+                        Structure Of The Complex Of Bovine Lactoperoxidase With 3,3&apos;-dipyridyl Ketone At 1.99 A
+                        Resolution &gt;gi|594149490|pdb|4PNX|A Chain A, Crystal Structure Of The Complex Of
+                        Lactoperoxidase With Bromo Methane At 2.41 Angstrom Resolution &gt;gi|1041576702|pdb|5GH0|A
+                        Chain A, Crystal structure of the complex of bovine lactoperoxidase with mercaptoimidazole at
+                        2.3 A resolution &gt;gi|1391852011|pdb|5ZGS|A Chain A, Crystal structure of the complex of
+                        bovine lactoperoxidase with multiple SCN and OSCN ions in the distal heme cavity &gt;gi|1418639928|pdb|6A4Y|A
+                        Chain A, Crystal structure of bovine lactoperoxidase with partial occupancies of iodide and SCN-
+                        ions at the substrate binding site on the distal heme side at 1.92 A resolution &gt;gi|1732261691|pdb|6KMK|A
+                        Chain A, Lactoperoxidase
+                    </Hit_def>
+                    <Hit_accession>2PT3_A</Hit_accession>
+                    <Hit_len>595</Hit_len>
+                    <Hit_hsps>
+                        <Hsp>
+                            <Hsp_num>1</Hsp_num>
+                            <Hsp_bit-score>22.6954</Hsp_bit-score>
+                            <Hsp_score>46</Hsp_score>
+                            <Hsp_evalue>9.88145</Hsp_evalue>
+                            <Hsp_query-from>3</Hsp_query-from>
+                            <Hsp_query-to>8</Hsp_query-to>
+                            <Hsp_hit-from>232</Hsp_hit-from>
+                            <Hsp_hit-to>237</Hsp_hit-to>
+                            <Hsp_query-frame>0</Hsp_query-frame>
+                            <Hsp_hit-frame>0</Hsp_hit-frame>
+                            <Hsp_identity>6</Hsp_identity>
+                            <Hsp_positive>6</Hsp_positive>
+                            <Hsp_gaps>0</Hsp_gaps>
+                            <Hsp_align-len>6</Hsp_align-len>
+                            <Hsp_qseq>KKPSPC</Hsp_qseq>
+                            <Hsp_hseq>KKPSPC</Hsp_hseq>
+                            <Hsp_midline>KKPSPC</Hsp_midline>
+                        </Hsp>
+                    </Hit_hsps>
+                </Hit>
+                <Hit>
+                    <Hit_num>5</Hit_num>
+                    <Hit_id>gi|226192661|pdb|3ERH|A</Hit_id>
+                    <Hit_def>Chain A, First Structural Evidence Of Substrate Specificity In Mammalian Peroxidases:
+                        Crystal Structures Of Substrate Complexes With Lactoperoxidases From Two Different Species &gt;gi|226192669|pdb|3FAQ|A
+                        Chain A, Crystal Structure Of Lactoperoxidase Complex With Cyanide
+                    </Hit_def>
+                    <Hit_accession>3ERH_A</Hit_accession>
+                    <Hit_len>595</Hit_len>
+                    <Hit_hsps>
+                        <Hsp>
+                            <Hsp_num>1</Hsp_num>
+                            <Hsp_bit-score>22.6954</Hsp_bit-score>
+                            <Hsp_score>46</Hsp_score>
+                            <Hsp_evalue>9.88145</Hsp_evalue>
+                            <Hsp_query-from>3</Hsp_query-from>
+                            <Hsp_query-to>8</Hsp_query-to>
+                            <Hsp_hit-from>232</Hsp_hit-from>
+                            <Hsp_hit-to>237</Hsp_hit-to>
+                            <Hsp_query-frame>0</Hsp_query-frame>
+                            <Hsp_hit-frame>0</Hsp_hit-frame>
+                            <Hsp_identity>6</Hsp_identity>
+                            <Hsp_positive>6</Hsp_positive>
+                            <Hsp_gaps>0</Hsp_gaps>
+                            <Hsp_align-len>6</Hsp_align-len>
+                            <Hsp_qseq>KKPSPC</Hsp_qseq>
+                            <Hsp_hseq>KKPSPC</Hsp_hseq>
+                            <Hsp_midline>KKPSPC</Hsp_midline>
+                        </Hsp>
+                    </Hit_hsps>
+                </Hit>
+            </Iteration_hits>
+            <Iteration_stat>
+                <Statistics>
+                    <Statistics_db-num>110698</Statistics_db-num>
+                    <Statistics_db-len>28572478</Statistics_db-len>
+                    <Statistics_hsp-len>0</Statistics_hsp-len>
+                    <Statistics_eff-space>0</Statistics_eff-space>
+                    <Statistics_kappa>0.11</Statistics_kappa>
+                    <Statistics_lambda>0.294</Statistics_lambda>
+                    <Statistics_entropy>0.61</Statistics_entropy>
+                </Statistics>
+            </Iteration_stat>
+        </Iteration>
+    </BlastOutput_iterations>
+</BlastOutput>
