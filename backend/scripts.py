@@ -1,4 +1,6 @@
 from Bio.Blast import NCBIWWW
+from Bio.Blast import NCBIXML
+
 
 def translate(seq):
     table = {
@@ -39,16 +41,25 @@ def read_seq(input_file):
     return seq
 
 
+def is_same_protein(alignment):
+    # Hsp_identity / Hsp_align - len
+    hsp = alignment.hsps[0]
+    return round(hsp.identities / hsp.align_length, 2) == 1
+
+
 if __name__ == "__main__":
-    seq_string = read_seq("adn.fasta")
-    sequence_data = translate(seq_string[20:])
+    seq_string = read_seq("serum_albumin.fasta")
+    sequence_data = translate(seq_string[110:])
     print(sequence_data)
     result_sequence = NCBIWWW.qblast(
         "blastp", "pdb", sequence_data, word_size=2, threshold=200000, matrix_name="BLOSUM62", gapcosts="11 1"
-    ).read()
-    # Hsp_identity / Hsp_align - len
+    )
     # Parametrizar word size, matrix_name
     print(result_sequence)
+    blast_records = NCBIXML.read(result_sequence)
+    exact_protein = next(alignment for alignment in blast_records.alignments if is_same_protein(alignment))
+    if exact_protein:
+        print("Esta es igual")
 
 # ADN:
     # TGA
