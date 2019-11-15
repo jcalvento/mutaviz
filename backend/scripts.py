@@ -71,3 +71,13 @@ if __name__ == "__main__":
     # UAA
     # UGA
 
+# Si es igual
+#   mutamos el adn
+#   obtenemos la proteina mutada
+#   traemos la estructura pdb
+#   con foldx modelamos la mutada
+
+# Si no es igual
+#   agarramos la mas parecida (identidad > y evalue <)
+#   modelamos la original
+#   con foldx modelamos la mutada
