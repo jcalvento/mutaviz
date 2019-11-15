@@ -41,11 +41,13 @@ def read_seq(input_file):
 
 if __name__ == "__main__":
     seq_string = read_seq("adn.fasta")
-    sequence_data = translate(seq_string)
+    sequence_data = translate(seq_string[20:])
     print(sequence_data)
     result_sequence = NCBIWWW.qblast(
-        "blastp", "pdb", sequence_data, word_size=2, threshold=200000, matrix_name="PAM30", gapcosts="9 1"
+        "blastp", "pdb", sequence_data, word_size=2, threshold=200000, matrix_name="BLOSUM62", gapcosts="11 1"
     ).read()
+    # Hsp_identity / Hsp_align - len
+    # Parametrizar word size, matrix_name
     print(result_sequence)
 
 # ADN:
