@@ -22,13 +22,12 @@ def is_same_protein(alignment):
 
 if __name__ == "__main__":
     seq_string = read_seq("serum_albumin.fasta")
-    sequence_data = Synthesizer(seq_string[110:]).run()
+    sequence_data = Synthesizer.accepting(Synthesizer.ADN, seq_string[110:]).run()
     print(sequence_data)
     result_sequence = NCBIWWW.qblast(
         "blastp", "pdb", sequence_data, word_size=2, threshold=200000, matrix_name="BLOSUM62", gapcosts="11 1"
     )
     # Parametrizar word size, matrix_name
-    print(result_sequence)
     blast_records = NCBIXML.read(result_sequence)
     exact_protein = next(alignment for alignment in blast_records.alignments if is_same_protein(alignment))
     if exact_protein:
