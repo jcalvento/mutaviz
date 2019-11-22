@@ -80,7 +80,7 @@ class ArnSynthesizer(Synthesizer):
     def table(self):
         return {
             'AUA': 'I', 'AUC': 'I', 'AUU': 'I', 'AUG': 'M',
-            'ACA': 'T', 'ACC': 'T', 'ACG': 'T', 'ACT': 'T',
+            'ACA': 'T', 'ACC': 'T', 'ACG': 'T', 'ACU': 'T',
             'AAC': 'N', 'AAU': 'N', 'AAA': 'K', 'AAG': 'K',
             'AGC': 'S', 'AGU': 'S', 'AGA': 'R', 'AGG': 'R',
             'CUA': 'L', 'CUC': 'L', 'CUG': 'L', 'CUU': 'L',
