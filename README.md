@@ -1,8 +1,16 @@
 # mutaviz
 
-## Setup env
-- Download virtualenv
-- `virtualenv venv --python=python3.7`
-- To use venv `source /venv/bin/activate`
-- To install dependencies `pip install -r requirements.txt`
-- To deactivate venv `deactivate`
+## Setup conda env
+`conda env create -f environment.yml`
+
+## Update conda env
+`conda env update -n mutavix --file environment.yml  --prune`
+
+## Activate conda env
+`conda activate mutaviz`
+
+## Deactivate conda env
+`conda deactivate`
+
+## Set modeller key in
+`<where is conda installed>/envs/mutaviz/lib/modeller-9.23/modlib/modeller/config.py`

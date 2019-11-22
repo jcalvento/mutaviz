@@ -1,16 +1,19 @@
 from modeller import *
 from modeller.automodel import *    # Load the automodel class
 from Bio.Align.Applications import ClustalOmegaCommandline
+import os
+
+target = 'result'
 
 in_file = "human_vs_rat_albumin.fasta"
-out_file = "result.ali"
+out_file = "%s.fasta" % target
+
 clustalomega_cline = ClustalOmegaCommandline(infile=in_file, outfile=out_file, verbose=True, auto=True)
 print(clustalomega_cline)
+os.system(str(clustalomega_cline))
 
 # FASTA to PIR
 e = environ()
-
-target='human_vs_rat_albumin'
 
 a = alignment(e, file='%s.fasta'%target, alignment_format='FASTA')
 a.write(file='%s.pir'%target, alignment_format='PIR')
