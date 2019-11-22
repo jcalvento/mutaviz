@@ -13,7 +13,6 @@ def read_seq(input_file):
     seq = seq.replace("\r", "")
     return seq
 
-
 def is_same_protein(alignment):
     # Hsp_identity / Hsp_align - len
     hsp = alignment.hsps[0]
@@ -25,13 +24,16 @@ if __name__ == "__main__":
     sequence_data = Synthesizer.accepting(Synthesizer.ADN, seq_string[110:]).run()
     print(sequence_data)
     result_sequence = NCBIWWW.qblast(
-        "blastp", "pdb", sequence_data, word_size=2, threshold=200000, matrix_name="BLOSUM62", gapcosts="11 1"
+        "blastp", "pdb", sequence_data, word_size=6, threshold=200000, matrix_name="BLOSUM62", gapcosts="11 1"
     )
     # Parametrizar word size, matrix_name
     blast_records = NCBIXML.read(result_sequence)
     exact_protein = next(alignment for alignment in blast_records.alignments if is_same_protein(alignment))
     if exact_protein:
         print("Esta es igual")
+        mutated_dna = mutate_dna(dna, 110)
+        mutated_sequence_data = translate(mutated_dna)
+
 
 
 # Si es igual
