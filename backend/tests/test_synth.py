@@ -1,4 +1,4 @@
-from backend.synth import Synthesizer
+from backend.models.synth import Synthesizer
 
 
 class TestSynth:

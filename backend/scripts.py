@@ -2,7 +2,7 @@ from Bio.Blast import NCBIWWW
 from Bio.Blast import NCBIXML
 from Bio.PDB import *
 
-from backend.synth import Synthesizer
+from backend.models.synth import Synthesizer
 
 
 def read_seq(input_file):

@@ -4,7 +4,7 @@
 `conda env create -f environment.yml`
 
 ## Update conda env
-`conda env update -n mutavix --file environment.yml  --prune`
+`conda env update -n mutaviz --file environment.yml  --prune`
 
 ## Activate conda env
 `conda activate mutaviz`
