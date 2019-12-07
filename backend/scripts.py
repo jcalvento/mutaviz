@@ -1,13 +1,13 @@
+import os
+
 from Bio.Blast import NCBIWWW
 from Bio.Blast import NCBIXML
 from Bio.PDB import *
-from Bio.Align.Applications import ClustalOmegaCommandline
-import os
-from models.synth import Synthesizer
 from models.aligner import Aligner
 from models.alignment_formatter import AlignmentFormatter
 from models.file_name_generator import FileNameGenerator
-from modeller import *
+from models.synth import Synthesizer
+
 
 def read_seq(input_file):
     with open(input_file, "r") as f:
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     pdb_key = exact_protein.accession.split("_")[0]
     print(pdb_key)
-    
+
     # me traigo el pdb del primer resultado
     pdb_file_path = PDBList().retrieve_pdb_file(pdb_key, pdir='backend/atom_files', file_format="pdb")
     coso = 'backend/atom_files/%s.pdb' % pdb_key
