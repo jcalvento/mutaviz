@@ -1,8 +1,5 @@
 from modeller import *
 from modeller.automodel import *
-from Bio.Align.Applications import ClustalOmegaCommandline
-from Bio.PDB import *
-import os
 
 # target = 'result'
 
@@ -23,23 +20,39 @@ import os
 # os.rename(file, 'backend/atom_files/4BKE.pdb')
 
 # Homology modeling with multiple templates
-log.verbose()    # request verbose output
-env = environ()  # create a new MODELLER environment to build this model in
- 
-# directories for input atom files
-env.io.atom_files_directory = ['atom_files']
-env.io.hetatm = True
+from backend.models.modeller import Modeller
 
-a = automodel(
-  env,
-  alnfile = 'aln_rat_3v03.pir', # alignment filename
-  knowns = ('3V03'),     # codes of the templates
-  sequence='NM_134326',
-  assess_methods=(assess.DOPE),
-  
-)
-# code of the target
-a.starting_model= 1                 # index of the first model
-a.ending_model  = 5                 # index of the last model
-                                   # (determines how many models to calculate)
-a.make()                            # do the actual homology modeling
+if __name__ == "__main__":
+    # log.verbose()    # request verbose output
+    # env = environ()  # create a new MODELLER environment to build this model in
+    #
+    # # directories for input atom files
+    # env.io.atom_files_directory = 'atom_files'
+    # env.io.hetatm = True
+    #
+    # a = automodel(
+    #   env,
+    #   alnfile = 'aln_rat_3v03.pir', # alignment filename
+    #   knowns = ('3V03'),     # codes of the templates
+    #   sequence='NM_134326',
+    #   assess_methods=(assess.DOPE),
+    #
+    # )
+    # # code of the target
+    # a.starting_model= 1                 # index of the first model
+    # a.ending_model  = 5                 # index of the last model
+    #                                    # (determines how many models to calculate)
+    # a.make()                            # do the actual homology modeling
+    #
+    # from functools import reduce
+    #
+    #
+    # def funcion(x, y):
+    #   if x['DOPE score'] > y['DOPE score']:
+    #     return y
+    #   return x
+    #
+    #
+    # reduce(lambda result, output: funcion(result, output), a.chains[0].seq.outputs)
+    model = Modeller().execute(alignment_file='aln_rat_3v03.pir', pdb_id='3V03', sequence='NM_134326')
+    print(model)

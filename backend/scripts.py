@@ -1,13 +1,13 @@
+import os
+
 from Bio.Blast import NCBIWWW
 from Bio.Blast import NCBIXML
 from Bio.PDB import *
-from Bio.Align.Applications import ClustalOmegaCommandline
-import os
-from models.synth import Synthesizer
 from models.aligner import Aligner
 from models.alignment_formatter import AlignmentFormatter
 from models.file_name_generator import FileNameGenerator
-from modeller import *
+from models.synth import Synthesizer
+
 
 def read_seq(input_file):
     with open(input_file, "r") as f:
@@ -25,7 +25,7 @@ def is_same_protein(alignment):
 
 
 if __name__ == "__main__":
-    seq_string = read_seq("backend/rat_albumin_dna.fasta")
+    seq_string = read_seq("rat_albumin_dna.fasta")
     sequence_data = Synthesizer.accepting(Synthesizer.ADN, seq_string[0:]).run()
     print(sequence_data)
     result_sequence = NCBIWWW.qblast(
@@ -61,10 +61,10 @@ if __name__ == "__main__":
 
     pdb_key = exact_protein.accession.split("_")[0]
     print(pdb_key)
-    
+
     # me traigo el pdb del primer resultado
-    pdb_file_path = PDBList().retrieve_pdb_file(pdb_key, pdir='backend/atom_files', file_format="pdb")
-    coso = 'backend/atom_fxiles/%s.pdb' % pdb_key
+    pdb_file_path = PDBList().retrieve_pdb_file(pdb_key, pdir='atom_files', file_format="pdb")
+    coso = 'atom_files/%s.pdb' % pdb_key
 
     # no renombro para que tenga el nombre que espera modeller (xxxx.pdb)
     os.rename(pdb_file_path, coso)
@@ -72,6 +72,10 @@ if __name__ == "__main__":
     structure = PDBParser().get_structure(pdb_key, coso)
     for chain in structure.get_chains():
         print(chain.get_id())
+    residues = list(chain.get_residues())
+    atoms = list(filter(lambda residue: not residue.get_id()[0].strip(), residues))
+    first_atom_residue = atoms[0].parent.get_id()[1]
+    last_atom_residue = atoms[-1].parent.get_id()[1]
 
     # busco la secuencia problema en el primer resultado del blast
     my_sequence = blast_records.alignments[0].hsps[0].query
@@ -80,13 +84,13 @@ if __name__ == "__main__":
     matching_sequence = blast_records.alignments[0].hsps[0].sbjct
 
     align_file_path = Aligner(
-        path="backend/alignments",
+        path="alignments",
         sequence_name="gilada",
         sequence_1=my_sequence,
         pdb_key=pdb_key,
         sequence_2=matching_sequence
     ).file_align()
 
-    pir_file_path = FileNameGenerator().random(extension='pir', path='backend/alignments')
+    pir_file_path = FileNameGenerator().random(extension='pir', path='alignments')
     AlignmentFormatter(align_file_path, pir_file_path).to_pir()
 
