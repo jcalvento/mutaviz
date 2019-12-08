@@ -64,7 +64,7 @@ if __name__ == "__main__":
     
     # me traigo el pdb del primer resultado
     pdb_file_path = PDBList().retrieve_pdb_file(pdb_key, pdir='backend/atom_files', file_format="pdb")
-    coso = 'backend/atom_files/%s.pdb' % pdb_key
+    coso = 'backend/atom_fxiles/%s.pdb' % pdb_key
 
     # no renombro para que tenga el nombre que espera modeller (xxxx.pdb)
     os.rename(pdb_file_path, coso)

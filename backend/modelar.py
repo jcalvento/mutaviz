@@ -27,12 +27,12 @@ log.verbose()    # request verbose output
 env = environ()  # create a new MODELLER environment to build this model in
  
 # directories for input atom files
-env.io.atom_files_directory = 'backend/atom_files'
+env.io.atom_files_directory = ['atom_files']
 env.io.hetatm = True
 
 a = automodel(
   env,
-  alnfile = 'backend/aln_rat_3v03.pir', # alignment filename
+  alnfile = 'aln_rat_3v03.pir', # alignment filename
   knowns = ('3V03'),     # codes of the templates
   sequence='NM_134326',
   assess_methods=(assess.DOPE),
