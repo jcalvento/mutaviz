@@ -54,4 +54,5 @@ if __name__ == "__main__":
     #
     #
     # reduce(lambda result, output: funcion(result, output), a.chains[0].seq.outputs)
-    print(Modeller().execute(alignment_file='aln_rat_3v03.pir', pdb_id='3V03', sequence='NM_134326'))
+    model = Modeller().execute(alignment_file='aln_rat_3v03.pir', pdb_id='3V03', sequence='NM_134326')
+    print(model)
