@@ -26,8 +26,8 @@ def is_same_protein(alignment):
 
 
 if __name__ == "__main__":
-    seq_string = read_seq("rat_albumin_dna.fasta")
-    muta = Mutaviz(seq_string[110:], {}, "testing")
+    seq_string = read_seq("serum_albumin_dna.fasta")
+    muta = Mutaviz(seq_string[110:1871], {10: "G"}, "testing")
     result = muta.process()
     print(result)
     # sequence_data = Synthesizer.accepting(Synthesizer.ADN, seq_string[0:]).run()

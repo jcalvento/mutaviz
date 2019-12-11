@@ -69,7 +69,7 @@ class Mutaviz:
 
     def align(self, protein):
         aligner = Aligner(path="alignments", sequence_name=self.__sequence_name, sequence_1=protein,
-                          pdb_key=self.__pdb_key(), sequence_2=self.protein_chain)
+                          pdb_key=self.__pdb_key(), sequence_2=self.__matching_sequence()) # o self.__matching_sequence()
         align_file_path = aligner.file_align()
         print(align_file_path)
         self.__original_pdb_filename = aligner.pdb_file_path
