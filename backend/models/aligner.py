@@ -52,7 +52,7 @@ class Aligner:
         new_file_name = self.__fetch_pdb()
 
         structure = PDBParser().get_structure(self.__pdb_key, new_file_name)
-        chain = list(structure.get_chains())[0]  # que cadena tenemos que usar?
+        chain = list(structure.get_chains())[0]
         residues = list(chain.get_residues())
         atoms = list(filter(lambda residue: not residue.get_id()[0].strip(), residues))
         first_atom_residue = atoms[0].get_id()[1]
@@ -95,6 +95,9 @@ class AlignmentFormatter:
             file_lines = read.strip().split(">")
         sequences = list(map(lambda line: self.__get_sequence(line.split("\n")), file_lines))
         sequences = list(filter(lambda seq: seq, sequences))
+        return self.__generate_pir_file(sequences)
+
+    def __generate_pir_file(self, sequences):
         file_path = self.random_file_name()
         file = open(file_path, 'w')
         self.__write_pir(file, sequences)
@@ -124,13 +127,6 @@ class AlignmentFormatter:
         )
         file.write("\n")
         file.write(sequences[1])
-
-    def __in_file(self, write_block):
-        file_path = self.random_file_name()
-        file = open(file_path, 'w')
-        write_block(file)
-        file.close()
-        return file_path
 
     def random_file_name(self):
         return FileNameGenerator().random(extension='pir', path=self.__path)

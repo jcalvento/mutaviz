@@ -29,11 +29,22 @@ class Mutaviz:
             mutated_protein = self.synthesize(self.__mutated_sequence)
             alignment_file = self.align(mutated_protein)
             print(alignment_file)
-            model_filename = Modeller().execute(
-                alignment_file=alignment_file, pdb_id=self.__pdb_key(), sequence=self.__sequence_name
-            )['name']
-            original_pdb_filename = self.__original_pdb_filename
-            return [model_filename, original_pdb_filename]
+            model_filename = self.model_structure(alignment_file)
+            return [model_filename, self.__original_pdb_filename]
+        else:
+            alignment_file = self.align(self.protein_chain)
+            original_model_filename = self.model_structure(alignment_file)
+            self.mutate()
+            mutated_protein = self.synthesize(self.__mutated_sequence)
+            alignment_file = self.align(mutated_protein)
+            print(alignment_file)
+            model_filename = self.model_structure(alignment_file)
+            return [model_filename, original_model_filename]
+
+    def model_structure(self, alignment_file):
+        return Modeller().execute(
+            alignment_file=alignment_file, pdb_id=self.__pdb_key(), sequence=self.__sequence_name
+        )['name']
 
     def synthesize(self, sequence):
         return Synthesizer.accepting(Synthesizer.ADN, sequence[0:]).run()
@@ -69,7 +80,7 @@ class Mutaviz:
 
     def align(self, protein):
         aligner = Aligner(path="alignments", sequence_name=self.__sequence_name, sequence_1=protein,
-                          pdb_key=self.__pdb_key(), sequence_2=self.__matching_sequence()) # o self.__matching_sequence()
+                          pdb_key=self.__pdb_key(), sequence_2=self.__matching_sequence())
         align_file_path = aligner.file_align()
         print(align_file_path)
         self.__original_pdb_filename = aligner.pdb_file_path
