@@ -4,9 +4,10 @@ from Bio.Blast import NCBIWWW
 from Bio.Blast import NCBIXML
 from Bio.PDB import *
 from models.aligner import Aligner
-from models.alignment_formatter import AlignmentFormatter
 from models.file_name_generator import FileNameGenerator
 from models.synth import Synthesizer
+
+from backend.models.mutaviz import Mutaviz
 
 
 def read_seq(input_file):
@@ -26,71 +27,74 @@ def is_same_protein(alignment):
 
 if __name__ == "__main__":
     seq_string = read_seq("rat_albumin_dna.fasta")
-    sequence_data = Synthesizer.accepting(Synthesizer.ADN, seq_string[0:]).run()
-    print(sequence_data)
-    result_sequence = NCBIWWW.qblast(
-        "blastp", "pdb", sequence_data, word_size=2, threshold=200000, matrix_name="BLOSUM62", gapcosts="11 1"
-    )
-    # Parametrizar word size, matrix_name
-    blast_records = NCBIXML.read(result_sequence)
-    # exact_protein = next((alignment for alignment in blast_records.alignments if is_same_protein(alignment)), False)
-    exact_protein = blast_records.alignments[0]
-    if exact_protein:
-        print("Esta es igual")
-        # mutamos el adn
-        # sintetizamos la proteina
-        # alineamos la proteina sintetizada con la proteina original
-        # pasamos el alineamiento a pir
-        # modelamos con el pdb que tira el resultado del blast que coincide 100%
-        # elegimos el mejor modelo (es el pdb con "DOPE score" mas bajo)
-        # le mostramos al usuario los dos pdb's el original y el modelo
-
-    # sino
-    #   le damos a elegir al usuario con que pdb de los primeros 5 resultados del blast quiere modelar
-    #   alineamos la secuencia que tenemos con la del resultado que el usuario eligio
-    #   pasamos el alineamiento a pir
-    #   modelamos con el pdb del resultado que eligio el usuario
-    #   elegimos el mejor modelo (es el pdb con "DOPE score" mas bajo)
-    #   mutamos el adn
-    #   sintetizamos la proteina
-    #   alineamos la proteina sintetizada con la proteina original
-    #   pasamos el alineamiento a pir
-    #   modelamos con el pdb resultado del modelado anterior
-    #   elegimos el mejor modelo (es el pdb con "DOPE score" mas bajo)
-    #   le mostramos al usuario los dos pdb's el modelado de la proteina original y el modelado de la mutante
-
-    pdb_key = exact_protein.accession.split("_")[0]
-    print(pdb_key)
-
-    # me traigo el pdb del primer resultado
-    pdb_file_path = PDBList().retrieve_pdb_file(pdb_key, pdir='atom_files', file_format="pdb")
-    coso = 'atom_files/%s.pdb' % pdb_key
-
-    # no renombro para que tenga el nombre que espera modeller (xxxx.pdb)
-    os.rename(pdb_file_path, coso)
-
-    structure = PDBParser().get_structure(pdb_key, coso)
-    for chain in structure.get_chains():
-        print(chain.get_id())
-    residues = list(chain.get_residues())
-    atoms = list(filter(lambda residue: not residue.get_id()[0].strip(), residues))
-    first_atom_residue = atoms[0].parent.get_id()[1]
-    last_atom_residue = atoms[-1].parent.get_id()[1]
-
-    # busco la secuencia problema en el primer resultado del blast
-    my_sequence = blast_records.alignments[0].hsps[0].query
-
-    # buco la secuencia que machea en el primer resultado del blast
-    matching_sequence = blast_records.alignments[0].hsps[0].sbjct
-
-    align_file_path = Aligner(
-        path="alignments",
-        sequence_name="gilada",
-        sequence_1=my_sequence,
-        pdb_key=pdb_key,
-        sequence_2=matching_sequence
-    ).file_align()
-
-    pir_file_path = FileNameGenerator().random(extension='pir', path='alignments')
-    AlignmentFormatter(align_file_path, pir_file_path).to_pir()
+    muta = Mutaviz(seq_string[110:], {}, "testing")
+    result = muta.process()
+    print(result)
+    # sequence_data = Synthesizer.accepting(Synthesizer.ADN, seq_string[0:]).run()
+    # print(sequence_data)
+    # result_sequence = NCBIWWW.qblast(
+    #     "blastp", "pdb", sequence_data, word_size=2, threshold=200000, matrix_name="BLOSUM62", gapcosts="11 1"
+    # )
+    # # Parametrizar word size, matrix_name
+    # blast_records = NCBIXML.read(result_sequence)
+    # # exact_protein = next((alignment for alignment in blast_records.alignments if is_same_protein(alignment)), False)
+    # exact_protein = blast_records.alignments[0]
+    # if exact_protein:
+    #     print("Esta es igual")
+    #     # mutamos el adn
+    #     # sintetizamos la proteina
+    #     # alineamos la proteina sintetizada con la proteina original
+    #     # pasamos el alineamiento a pir
+    #     # modelamos con el pdb que tira el resultado del blast que coincide 100%
+    #     # elegimos el mejor modelo (es el pdb con "DOPE score" mas bajo)
+    #     # le mostramos al usuario los dos pdb's el original y el modelo
+    #
+    # # sino
+    # #   le damos a elegir al usuario con que pdb de los primeros 5 resultados del blast quiere modelar
+    # #   alineamos la secuencia que tenemos con la del resultado que el usuario eligio
+    # #   pasamos el alineamiento a pir
+    # #   modelamos con el pdb del resultado que eligio el usuario
+    # #   elegimos el mejor modelo (es el pdb con "DOPE score" mas bajo)
+    # #   mutamos el adn
+    # #   sintetizamos la proteina
+    # #   alineamos la proteina sintetizada con la proteina original
+    # #   pasamos el alineamiento a pir
+    # #   modelamos con el pdb resultado del modelado anterior
+    # #   elegimos el mejor modelo (es el pdb con "DOPE score" mas bajo)
+    # #   le mostramos al usuario los dos pdb's el modelado de la proteina original y el modelado de la mutante
+    #
+    # pdb_key = exact_protein.accession.split("_")[0]
+    # print(pdb_key)
+    #
+    # # me traigo el pdb del primer resultado
+    # pdb_file_path = PDBList().retrieve_pdb_file(pdb_key, pdir='atom_files', file_format="pdb")
+    # coso = 'atom_files/%s.pdb' % pdb_key
+    #
+    # # no renombro para que tenga el nombre que espera modeller (xxxx.pdb)
+    # os.rename(pdb_file_path, coso)
+    #
+    # structure = PDBParser().get_structure(pdb_key, coso)
+    # for chain in structure.get_chains():
+    #     print(chain.get_id())
+    # residues = list(chain.get_residues())
+    # atoms = list(filter(lambda residue: not residue.get_id()[0].strip(), residues))
+    # first_atom_residue = atoms[0].parent.get_id()[1]
+    # last_atom_residue = atoms[-1].parent.get_id()[1]
+    #
+    # # busco la secuencia problema en el primer resultado del blast
+    # my_sequence = blast_records.alignments[0].hsps[0].query
+    #
+    # # buco la secuencia que machea en el primer resultado del blast
+    # matching_sequence = blast_records.alignments[0].hsps[0].sbjct
+    #
+    # align_file_path = Aligner(
+    #     path="alignments",
+    #     sequence_name="gilada",
+    #     sequence_1=my_sequence,
+    #     pdb_key=pdb_key,
+    #     sequence_2=matching_sequence
+    # ).file_align()
+    #
+    # pir_file_path = FileNameGenerator().random(extension='pir', path='alignments')
+    # AlignmentFormatter(align_file_path, pir_file_path).to_pir()
 
