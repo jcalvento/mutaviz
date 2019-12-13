@@ -1,6 +1,12 @@
 from abc import abstractmethod
 
 
+class InvalidSequenceLengthException(Exception):
+    def __init__(self, message):
+        super()
+        self.message = message
+
+
 class Synthesizer:
     STOP = '_'
     ADN = 'ADN'
@@ -24,6 +30,7 @@ class Synthesizer:
 
     def __init__(self, seq):
         self.__seq = seq
+        self.validate_sequence()
 
     def run(self):
         protein = ""
@@ -44,6 +51,12 @@ class Synthesizer:
     @property
     def seq(self):
         return self.__seq
+
+    def validate_sequence(self):
+        if len(self.__seq) % 3 != 0:
+            raise InvalidSequenceLengthException("Sequence length has to multiple a multiple of 3")
+        if len(self.seq) < 60:
+            raise InvalidSequenceLengthException("Sequence length not valid. Length has to be greater than 60")
 
 
 class AdnSynthesizer(Synthesizer):
