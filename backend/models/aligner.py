@@ -62,8 +62,8 @@ class Aligner:
         return self.__structure_info
 
     def __fetch_pdb(self):
-        pdb_file_path = PDBList().retrieve_pdb_file(self.__pdb_key, pdir='atom_files', file_format="pdb")
-        new_file_name = 'atom_files/%s.pdb' % self.__pdb_key
+        pdb_file_path = PDBList().retrieve_pdb_file(self.__pdb_key, pdir='backend/atom_files', file_format="pdb")
+        new_file_name = 'backend/atom_files/%s.pdb' % self.__pdb_key
         # renombro para que tenga el nombre que espera modeller (xxxx.pdb)
         os.rename(pdb_file_path, new_file_name)
         self.__pdb_file_path = new_file_name

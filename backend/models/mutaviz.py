@@ -64,7 +64,7 @@ class Mutaviz:
         # scan_result = NCBIWWW.qblast(
         #     "blastp", "pdb", self.__protein_chain, word_size=2, threshold=200000, matrix_name="BLOSUM62", gapcosts="11 1"
         # )
-        with open("serum_albumin_result.xml", "r") as f:
+        with open("backend/serum_albumin_result.xml", "r") as f:
             file = f.read()
         scan_result = StringIO(file)
         print("Blast query done")
@@ -79,14 +79,14 @@ class Mutaviz:
         return self.__most_similar_structure.hsps[0].sbjct
 
     def align(self, protein):
-        aligner = Aligner(path="alignments", sequence_name=self.__sequence_name, sequence_1=protein,
+        aligner = Aligner(path="backend/alignments", sequence_name=self.__sequence_name, sequence_1=protein,
                           pdb_key=self.__pdb_key(), sequence_2=self.__matching_sequence())
         align_file_path = aligner.file_align()
         print(align_file_path)
         self.__original_pdb_filename = aligner.pdb_file_path
 
-        pir_file_path = FileNameGenerator().random(extension='pir', path='alignments')
-        return AlignmentFormatter(align_file_path, pir_file_path, aligner.structure_info(), "alignments").to_pir()
+        pir_file_path = FileNameGenerator().random(extension='pir', path='backend/alignments')
+        return AlignmentFormatter(align_file_path, pir_file_path, aligner.structure_info(), "backend/alignments").to_pir()
 
     @property
     def protein_chain(self):
