@@ -42,7 +42,7 @@ class Mutaviz:
             return [model_filename, original_model_filename]
 
     def model_structure(self, alignment_file):
-        return Modeller().execute(
+        return 'backend/modeller/' + Modeller().execute(
             alignment_file=alignment_file, pdb_id=self.__pdb_key(), sequence=self.__sequence_name
         )['name']
 
@@ -71,6 +71,7 @@ class Mutaviz:
         blast_records = NCBIXML.read(scan_result)
         print("Finding best match")
         self.__most_similar_structure = reduce(lambda result, output: self.__most_similar_between(result, output), blast_records.alignments)
+        # self.__most_similar_structure = blast_records.alignments[1]
 
     def __pdb_key(self):
         return self.__most_similar_structure.accession.split("_")[0]

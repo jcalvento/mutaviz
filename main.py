@@ -1,4 +1,7 @@
+import os
+
 from backend.models.mutaviz import Mutaviz
+from pymol2 import PyMOL
 
 
 def read_seq(input_file):
@@ -12,7 +15,15 @@ def read_seq(input_file):
 
 
 if __name__ == "__main__":
+    os.environ["LM_LICENSE_FILE"] = "pymol-edu-license.lic"
     seq_string = read_seq("backend/serum_albumin_dna.fasta")
     muta = Mutaviz(seq_string[110:1871], {10: "G"}, "testing")
     result = muta.process()
     print(result)
+    pymol = PyMOL()
+    pymol.start()
+    pymol.cmd.load(result[0], "el1")
+    pymol.cmd.enable("el1")
+    pymol.cmd.load(result[1], "el2")
+    pymol.cmd.enable("el2")
+    pymol.cmd.png("algo.png", 1200, 1200)
