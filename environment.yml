@@ -1,0 +1,13 @@
+name: mutaviz
+channels:
+  - bioconda
+  - salilab
+  - schrodinger
+  - defaults
+dependencies:
+  - biopython=1.74=py37h1de35cc_0
+  - blas=1.0=mkl
+  - modeller=9.23=py37_1
+  - pymol=2.3.4=py37h95b93ae_0
+  - pytest=5.2.4=py37_1
+  - python=3.7.4=h359304d_1
